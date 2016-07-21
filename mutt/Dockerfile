@@ -19,7 +19,7 @@ RUN addgroup -g 1000 user \
 
 RUN apk --no-cache add \
   git autoconf gcc g++ make automake ncurses-dev openssl-dev \
-  lynx vim
+  lynx vim cyrus-sasl-dev
 
 RUN git clone https://github.com/neomutt/neomutt.git /usr/src/neomutt
 
@@ -32,6 +32,7 @@ RUN ./configure \
       --enable-imap \
       --with-ssl \
       --enable-sidebar \
+      --with-sasl \
       --enable-smtp && \
     make && make install
 
