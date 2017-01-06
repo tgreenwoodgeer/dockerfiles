@@ -21,30 +21,23 @@ RUN apk --no-cache --repository https://dl-3.alpinelinux.org/alpine/edge/testing
   make \
   py-cheetah \
   tar \
-  unrar
-
-# Install Sabnzbd
-RUN curl -o /tmp/sabnzbd.tar.gz https://codeload.github.com/sabnzbd/sabnzbd/tar.gz/1.1.1 \
-    && tar xzf /tmp/sabnzbd.tar.gz \
-    && mv sabnzbd-* sabnzbd 
-
-# Build par2
-RUN curl -o /tmp/par2cmdline.tar.gz https://codeload.github.com/Parchive/par2cmdline/tar.gz/v0.6.14 \
-    && tar xzf /tmp/par2cmdline.tar.gz -C /tmp \
-    && cd /tmp/par2cmdline-* \
-    && aclocal \
-    && automake --add-missing \
-    && autoconf \
-    && ./configure \
-    && make \
-    && make install 
-
-# Clean up build tools
-RUN apk del \ 
-  automake \
-  autoconf \
-  make \
-  g++ 
+  unrar \
+  && curl -o /tmp/sabnzbd.tar.gz https://codeload.github.com/sabnzbd/sabnzbd/tar.gz/1.1.1 \
+  && tar xzf /tmp/sabnzbd.tar.gz \
+  && mv sabnzbd-* sabnzbd \
+  && curl -o /tmp/par2cmdline.tar.gz https://codeload.github.com/Parchive/par2cmdline/tar.gz/v0.6.14 \
+  && tar xzf /tmp/par2cmdline.tar.gz -C /tmp \
+  && cd /tmp/par2cmdline-* \
+  && aclocal \
+  && automake --add-missing \
+  && autoconf \
+  && ./configure \
+  && make \
+  && make install \
+  && apk del automake autoconf make g++ git\
+  && rm -rf /tmp/* \
+  && rm -rf /sabnzbd/osx \
+  && rm -rf /sabnzbd/solaris
 
 EXPOSE 8080
 
