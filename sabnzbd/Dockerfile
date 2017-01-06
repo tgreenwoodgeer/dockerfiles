@@ -19,9 +19,13 @@ RUN apk --no-cache --repository https://dl-3.alpinelinux.org/alpine/edge/testing
   g++ \
   git \
   make \
+  openssl \
   py-cheetah \
+  py-openssl \
+  py2-pip \
   tar \
   unrar \
+  && pip install pyopenssl \
   && curl -o /tmp/sabnzbd.tar.gz https://codeload.github.com/sabnzbd/sabnzbd/tar.gz/1.1.1 \
   && tar xzf /tmp/sabnzbd.tar.gz \
   && mv sabnzbd-* sabnzbd \
