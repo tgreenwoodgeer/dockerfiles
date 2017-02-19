@@ -1,0 +1,3 @@
+*/10 * * * * xvfb-run calibredb add /opt/calibre/import/ -r --with-library /opt/calibre/library && rm /opt/calibre/import/*
+
+
