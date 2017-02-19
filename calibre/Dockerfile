@@ -7,7 +7,7 @@
 FROM ubuntu:xenial
 
 RUN apt-get update -y \
-  && apt-get install -y calibre \
+  && apt-get install -y calibre xvfb \
   && apt-get clean \
   && rm -rf /var/cache/apt/* /var/lib/apt/lists/*
 
