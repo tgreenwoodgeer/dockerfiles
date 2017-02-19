@@ -7,7 +7,7 @@
 FROM ubuntu:xenial
 
 RUN apt-get update -y \
-  && apt-get install -y calibre xvfb \
+  && apt-get install -y calibre xvfb imagemagick\
   && apt-get clean \
   && rm -rf /var/cache/apt/* /var/lib/apt/lists/*
 
